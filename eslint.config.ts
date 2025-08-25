@@ -4,6 +4,8 @@ import pluginVue from 'eslint-plugin-vue'
 import pluginVitest from '@vitest/eslint-plugin'
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 import pluginPrettier from 'eslint-plugin-prettier'
+// 添加这行
+import tseslint from '@typescript-eslint/eslint-plugin'
 
 // To allow more languages other than `ts` in `.vue` files, uncomment the following lines:
 // import { configureVueProject } from '@vue/eslint-config-typescript'
@@ -31,6 +33,8 @@ export default defineConfigWithVueTs(
       prettier: pluginPrettier
     },
     rules: {
+      // ...现有规则
+
       'prettier/prettier': [
         'warn',
         {
@@ -47,7 +51,9 @@ export default defineConfigWithVueTs(
           ignores: ['index']
         }
       ],
-      'vue/no-setup-props-destructure': ['off']
+      'vue/no-setup-props-destructure': ['off'],
+      'no-undef': 'error',
+      '@typescript-eslint/no-unused-vars': 'warn'
     }
   }
 )
