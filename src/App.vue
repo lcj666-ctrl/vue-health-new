@@ -1,13 +1,21 @@
 <script setup lang="ts">
 import { Button as vanButton } from 'vant'
-
+import request from '@/untils'
 // import { useUserStore } from './stores/user.ts'
 import { useUserStore } from './stores'
 import type { User } from '@/types/user'
-
+import { onMounted } from 'vue'
 function getChange(u: User) {
   useUserStore().setUser(u)
 }
+onMounted(async () => {
+  const res = await request<User>('/login/password', 'POST', {
+    mobile: '13211112222',
+    password: 'abc12345'
+  })
+  console.log(res.data)
+  getChange(res.data)
+})
 </script>
 
 <template>
