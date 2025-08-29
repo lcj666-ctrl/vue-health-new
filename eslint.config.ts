@@ -28,23 +28,25 @@ export default defineConfigWithVueTs(
   vueTsConfigs.recommended,
   {
     rules: {
+      'prettier/prettier': [
+        'warn',
+        {
+          singleQuote: true,
+          semi: false,
+          printWidth: 80,
+          trailingComma: 'none',
+          endOfLine: 'auto'
+        }
+      ],
       'vue/multi-word-component-names': [
-        'error',
+        'warn',
         {
           ignores: ['index']
         }
       ],
-      'vue/no-setup-props-destructure': ['off'],
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-unused-vars': 'warn'
+      'vue/no-setup-props-destructure': ['off']
     }
   },
-  // {
-  //   files: ['**/*.vue'],
-  //   rules: {
-  //     'no-undef': 'error'
-  //   }
-  // },
   //为测试文件应用 Vitest 推荐规则
   {
     ...pluginVitest.configs.recommended,

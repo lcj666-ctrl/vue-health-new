@@ -32,7 +32,7 @@ instance.interceptors.response.use(
     // 业务逻辑成功，返回响应数据，作为axios成功的结果
     return res.data
   },
-  (err) => {
+  (err: AxiosError) => {
     if (err.response.status === 401) {
       // 删除用户信息
       const store = useUserStore()
@@ -52,8 +52,8 @@ type Data<T> = {
   data: T
 }
 // 4. 请求工具函数
-const request = <T>(url: string, method: Method = 'GET', submitData?: object) => {
-  return instance.request<T, Data<T>>({
+const request = <T, R>(url: string, method: Method = 'GET', submitData?: object) => {
+  return instance.request<T, R, Data<T>>({
     url,
     method,
     [method.toLowerCase() === 'GET' ? 'params' : 'data']: submitData
