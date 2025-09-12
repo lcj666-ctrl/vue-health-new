@@ -1,7 +1,10 @@
 //：导入 ESLint 的全局忽略配置功能
 import { globalIgnores } from 'eslint/config'
 //：导入 Vue TypeScript 配置工具
-import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
+import {
+  defineConfigWithVueTs,
+  vueTsConfigs
+} from '@vue/eslint-config-typescript'
 //：导入 Vue 文件的 ESLint 插件
 import pluginVue from 'eslint-plugin-vue'
 //：导入 Vitest 测试框架的 ESLint 插件
@@ -31,7 +34,7 @@ export default defineConfigWithVueTs(
       'prettier/prettier': [
         'warn',
         {
-          singleQuote: true,
+          singleQuote: false,
           semi: false,
           printWidth: 80,
           trailingComma: 'none',

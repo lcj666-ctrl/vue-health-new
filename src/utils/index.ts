@@ -52,11 +52,15 @@ type Data<T> = {
   data: T
 }
 // 4. 请求工具函数
-const request = <T, R>(url: string, method: Method = 'GET', submitData?: object) => {
-  return instance.request<T, R, Data<T>>({
+const request = <T>(
+  url: string,
+  method: Method = 'GET',
+  submitData?: object
+) => {
+  return instance.request<T, Data<T>>({
     url,
     method,
-    [method.toLowerCase() === 'GET' ? 'params' : 'data']: submitData
+    [method.toLowerCase() === 'get' ? 'params' : 'data']: submitData
   })
 }
 export { baseURL, instance, request as default }

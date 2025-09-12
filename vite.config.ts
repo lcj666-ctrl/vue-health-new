@@ -5,6 +5,10 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
+
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import path from 'path'
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -17,6 +21,10 @@ export default defineConfig({
       dts: false,
       // 原因：这类组件的样式还是需要单独引入，样式全局引入了，关闭自动引入,否则会有重复的组件
       resolvers: [VantResolver({ importStyle: false })]
+    }),
+    createSvgIconsPlugin({
+      // 指定图标文件夹，绝对路径（NODE代码）
+      iconDirs: [path.resolve(process.cwd(), 'src/icons')]
     })
   ],
   // base: '/lcj888/',
