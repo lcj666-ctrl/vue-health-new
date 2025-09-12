@@ -34,9 +34,9 @@ export default defineConfigWithVueTs(
       'prettier/prettier': [
         'warn',
         {
-          singleQuote: false,
+          singleQuote: true,
           semi: false,
-          printWidth: 80,
+          printWidth: 100,
           trailingComma: 'none',
           endOfLine: 'auto'
         }

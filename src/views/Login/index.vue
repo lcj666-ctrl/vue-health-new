@@ -33,7 +33,7 @@ const onSubmit = async () => {
   // const res = isPass.value
   //   ? await loginByPassword(mobile.value, password.value)
   //   : await loginByMobile(mobile.value, code.value)
-  store.setUser(data)
+  store.setUser(data.data)
   // 如果有回跳地址就进行回跳，没有跳转到个人中心
   router.push(route.query.returnUrl || '/user')
   showToast('登录成功')
